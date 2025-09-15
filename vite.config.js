@@ -64,6 +64,8 @@ export default defineConfig({
 	preview: {
 		port: 3000,
 		host: true,
+		// Handle client-side routing in preview mode
+		historyApiFallback: true,
 	},
 
 	// Environment variables prefix

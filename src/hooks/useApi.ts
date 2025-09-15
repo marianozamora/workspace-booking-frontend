@@ -63,8 +63,11 @@ export const useCreateBooking = () => {
 	return useMutation({
 		mutationFn: (data: CreateBookingRequest) => api.bookings.create(data),
 		onSuccess: () => {
-			// Invalidate and refetch bookings
-			queryClient.invalidateQueries({ queryKey: queryKeys.bookings() });
+			// Invalidate all bookings queries (with any parameters)
+			queryClient.invalidateQueries({
+				queryKey: ["bookings"],
+				exact: false, // This will invalidate all queries that start with ["bookings"]
+			});
 			// Also invalidate spaces to update availability
 			queryClient.invalidateQueries({ queryKey: queryKeys.spaces });
 		},
@@ -76,10 +79,48 @@ export const useCancelBooking = () => {
 
 	return useMutation({
 		mutationFn: (id: string) => api.bookings.cancel(id),
-		onSuccess: () => {
-			// Invalidate and refetch bookings
-			queryClient.invalidateQueries({ queryKey: queryKeys.bookings() });
-			// Also invalidate spaces to update availability
+		onMutate: async (id: string) => {
+			// Cancel any outgoing refetches (so they don't overwrite our optimistic update)
+			await queryClient.cancelQueries({ queryKey: ["bookings"] });
+
+			// Snapshot the previous value
+			const previousBookings = queryClient.getQueriesData({
+				queryKey: ["bookings"],
+			});
+
+			// Optimistically update to the new value
+			queryClient.setQueriesData({ queryKey: ["bookings"] }, (old: any) => {
+				if (!old) return old;
+
+				// Update bookings data to mark the booking as cancelled
+				if (old.data && Array.isArray(old.data)) {
+					return {
+						...old,
+						data: old.data.map((booking: any) =>
+							booking.id === id ? { ...booking, status: "CANCELLED" } : booking
+						),
+					};
+				}
+				return old;
+			});
+
+			// Return a context object with the snapshotted value
+			return { previousBookings };
+		},
+		onError: (_err, _id, context) => {
+			// If the mutation fails, use the context returned from onMutate to roll back
+			if (context?.previousBookings) {
+				context.previousBookings.forEach(([queryKey, data]) => {
+					queryClient.setQueryData(queryKey, data);
+				});
+			}
+		},
+		onSettled: () => {
+			// Always refetch after error or success to ensure we have the latest data
+			queryClient.invalidateQueries({
+				queryKey: ["bookings"],
+				exact: false,
+			});
 			queryClient.invalidateQueries({ queryKey: queryKeys.spaces });
 		},
 	});
@@ -133,8 +174,11 @@ export const useUpdateBooking = () => {
 		mutationFn: ({ id, data }: { id: string; data: UpdateBookingRequest }) =>
 			api.bookings.update(id, data),
 		onSuccess: () => {
-			// Invalidate and refetch bookings
-			queryClient.invalidateQueries({ queryKey: queryKeys.bookings() });
+			// Invalidate all bookings queries (with any parameters)
+			queryClient.invalidateQueries({
+				queryKey: ["bookings"],
+				exact: false, // This will invalidate all queries that start with ["bookings"]
+			});
 			// Also invalidate spaces to update availability
 			queryClient.invalidateQueries({ queryKey: queryKeys.spaces });
 		},
@@ -147,8 +191,11 @@ export const useDeleteBooking = () => {
 	return useMutation({
 		mutationFn: (id: string) => api.bookings.delete(id),
 		onSuccess: () => {
-			// Invalidate and refetch bookings
-			queryClient.invalidateQueries({ queryKey: queryKeys.bookings() });
+			// Invalidate all bookings queries (with any parameters)
+			queryClient.invalidateQueries({
+				queryKey: ["bookings"],
+				exact: false, // This will invalidate all queries that start with ["bookings"]
+			});
 			// Also invalidate spaces to update availability
 			queryClient.invalidateQueries({ queryKey: queryKeys.spaces });
 		},
