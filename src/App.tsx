@@ -1,30 +1,22 @@
 import "./App.css";
-import { Welcome, SetupStatus } from "./components";
+import { QueryProvider } from "./providers/QueryProvider";
+import { AppRouter } from "./components";
+import { NotificationContainer } from "./components/ui";
+import { useNotifications } from "./store/useAppStore";
 
 function App() {
+	const { notifications, removeNotification } = useNotifications();
+
 	return (
-		<div className='App'>
-			<div
-				style={{
-					minHeight: "100vh",
-					backgroundColor: "#f9fafb",
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-				}}
-			>
-				<div
-					style={{
-						maxWidth: "28rem",
-						width: "100%",
-						padding: "2rem",
-					}}
-				>
-					<Welcome />
-					<SetupStatus />
-				</div>
+		<QueryProvider>
+			<div className='App'>
+				<AppRouter />
+				<NotificationContainer
+					notifications={notifications}
+					onClose={removeNotification}
+				/>
 			</div>
-		</div>
+		</QueryProvider>
 	);
 }
 
