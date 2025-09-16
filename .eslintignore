@@ -1,0 +1,14 @@
+dist
+build
+node_modules
+.cache
+storybook-static
+*.config.js
+*.config.ts
+*.test.js
+*.test.jsx
+*.test.ts
+*.test.tsx
+src/test/
+coverage/
+src/vite-env.d.ts

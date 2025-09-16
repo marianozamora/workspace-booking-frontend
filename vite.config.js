@@ -10,9 +10,6 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
-			"@components": path.resolve(__dirname, "./src/components"),
-			"@contexts": path.resolve(__dirname, "./src/contexts"),
-			"@assets": path.resolve(__dirname, "./src/assets"),
 		},
 	},
 
@@ -51,13 +48,7 @@ export default defineConfig({
 		},
 
 		// Build optimizations
-		minify: "terser",
-		terserOptions: {
-			compress: {
-				drop_console: true,
-				drop_debugger: true,
-			},
-		},
+		minify: "esbuild", // Use faster esbuild instead of terser
 	},
 
 	// Preview server (for production build)

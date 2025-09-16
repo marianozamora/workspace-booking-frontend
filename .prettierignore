@@ -1,0 +1,39 @@
+# Ignore artifacts:
+dist
+build
+coverage
+node_modules
+.cache
+.parcel-cache
+.next
+.nuxt
+.vuepress/dist
+.serverless
+.fusebox
+.dynamodb
+.tern-port
+.vscode-test
+.nyc_output
+.instrument
+.eslintcache
+.stylelintcache
+
+# Ignore all HTML files:
+*.html
+
+# Ignore config files
+*.config.js
+*.config.ts
+vite.config.*
+tailwind.config.*
+
+# Ignore lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore markdown files
+*.md
+
+# Ignore storybook static
+storybook-static

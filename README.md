@@ -1,567 +1,331 @@
 # Workspace Booking Frontend
 
-A modern React application built with Vite and TypeScript for managing workspace reservations.
+A modern React application for managing workspace reservations, built with Vite, TypeScript, and Tailwind CSS.
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- npm or yarn
+- **Node.js** (v22.0 or higher) 
+- **npm** or **yarn** package manager
 
-### Installation & Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## 🛠️ Tech Stack
-
-- **Framework**: React 18
-- **Build Tool**: Vite 5
-- **Language**: TypeScript 5
-- **Styling**: Tailwind CSS 3
-- **Icons**: Lucide React
-- **State Management**: Zustand
-- **Data Fetching**: TanStack Query (React Query)
-- **Routing**: React Router DOM
-- **Testing**: Vitest + Testing Library
-
-## 📁 Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-├── contexts/           # React contexts
-├── assets/            # Static assets
-├── main.tsx           # Application entry point
-├── App.tsx            # Main App component
-├── App.css            # Global styles
-├── index.css          # Base styles & Tailwind
-└── vite-env.d.ts      # TypeScript environment definitions
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Copy `.env.example` to `.env` and configure:
-
-```bash
-VITE_API_BASE_URL=http://localhost:3000
-VITE_APP_NAME="Workspace Booking System"
-VITE_APP_VERSION="1.0.0"
-VITE_ENABLE_DEV_TOOLS=true
-```
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run test` - Run tests
-- `npm run test:ui` - Run tests with UI
-- `npm run test:coverage` - Run tests with coverage
-- `npm run lint` - Lint code
-- `npm run lint:fix` - Lint and fix issues
-- `npm run type-check` - Type check without emitting
-
-## 🌟 Features
-
-### Current Implementation
-
-- ✅ Vite + React setup with Hot Module Replacement
-- ✅ TypeScript configuration with strict mode
-- ✅ Tailwind CSS for utility-first styling
-- ✅ Component-based architecture
-- ✅ Development environment configuration
-- ✅ Path mapping for clean imports
-
-### Planned Features
-
-- 🔲 Backend API integration
-- 🔲 Authentication system
-- 🔲 Workspace booking interface
-- 🔲 Calendar integration
-- 🔲 User management
-- 🔲 Real-time notifications
-
-## 🚦 Getting Started
+### Installation
 
 1. **Clone the repository**
-
    ```bash
    git clone <repository-url>
    cd workspace-booking-frontend
    ```
 
 2. **Install dependencies**
-
    ```bash
    npm install
-   ```
-
-3. **Set up environment**
-
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
-
-4. **Start development**
-
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser**
-   Navigate to `http://localhost:3001`
-
-## 🔗 API Integration
-
-The frontend is configured to connect to the backend API running on `http://localhost:3000`. Make sure the backend server is running for full functionality.
-
-## � Development Guidelines
-
-### Code Style
-
-- Use TypeScript for type safety
-- Follow React functional component patterns
-- Use custom hooks for reusable logic
-- Implement proper error boundaries
-
-### Component Structure
-
-- Keep components small and focused
-- Use TypeScript interfaces for props
-- Implement proper prop validation
-- Use composition over inheritance
-
-### Testing
-
-- Write unit tests for utilities and hooks
-- Use integration tests for complex components
-- Maintain good test coverage
-- Test accessibility features
-
-## 🤝 Contributing
-
-1. Follow the existing code style
-2. Write tests for new features
-3. Update documentation as needed
-4. Use meaningful commit messages
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-- **Reservation System**: Create, view, and delete reservations
-- **Search & Filters**: Find spaces and reservations quickly
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
-
-### Technical Features
-
-- **React 18**: Modern React with hooks and functional components
-- **API Integration**: RESTful API communication with error handling
-- **State Management**: Context API for global state management
-- **Form Validation**: Client-side validation with user-friendly error messages
-- **Authentication**: API key-based authentication
-- **Loading States**: Smooth loading indicators and feedback
-- **Error Handling**: Comprehensive error handling and user notifications
-
-## 📋 Requirements
-
-- Node.js (v16.0 or higher)
-- npm or yarn package manager
-- Backend API server running (see API Integration section)
-
-## 🛠️ Installation
-
-### Option 1: Standard Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone <repository-url>
-   cd workspace-reservation-frontend
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   # or
-   yarn install
    ```
 
 3. **Environment setup**
-
    ```bash
+   # Copy environment template
    cp .env.example .env
+   
+   # Edit .env file with your configuration
+   VITE_API_BASE_URL=http://localhost:3000
+   VITE_API_KEY=your-api-key-here
    ```
 
-   Edit the `.env` file with your configuration:
-
-   ```
-   REACT_APP_API_BASE_URL=http://localhost:3001/api
-   REACT_APP_API_KEY=your-api-key-here
-   ```
-
-4. **Start the development server**
-
+4. **Start development server**
    ```bash
-   npm start
-   # or
-   yarn start
+   npm run dev
+   
+   # Or use Makefile for quick start
+   make start
    ```
 
-   The application will open at `http://localhost:3000`
+5. **Open your browser**
+   
+   Navigate to `http://localhost:3001`
 
-### Option 2: Docker Installation (Recommended)
+## 📋 Available Scripts
 
-1. **Clone the repository**
+### NPM Scripts
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server with hot reload |
+| `npm run build` | Build optimized production bundle |
+| `npm run preview` | Preview production build locally |
+| `npm run test` | Run unit tests |
+| `npm run test:ui` | Run tests with interactive UI |
+| `npm run test:coverage` | Generate test coverage report |
+| `npm run type-check` | Type check without emitting files |
+| `npm run lint` | Lint code for errors and style issues |
+| `npm run lint:fix` | Auto-fix linting issues |
 
-   ```bash
-   git clone <repository-url>
-   cd workspace-reservation-frontend
-   ```
+### Makefile Commands
+| Command | Description |
+|---------|-------------|
+| `make start` | Quick start: install dependencies and run dev server |
+| `make start-docker` | Quick start with Docker |
+| `make dev` | Start development server |
+| `make build` | Build for production |
+| `make test` | Run tests |
+| `make docker-prod` | Run production with Docker |
+| `make docker-dev` | Run development with Docker |
+| `make clean` | Clean build artifacts |
+| `make help` | Show all available commands |
 
-2. **Environment setup**
+## 🛠️ Tech Stack
 
-   ```bash
-   cp .env.example .env
-   ```
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| **React** | UI Framework | 18.2.0 |
+| **TypeScript** | Type Safety | 5.2.2 |
+| **Vite** | Build Tool & Dev Server | 5.0.0 |
+| **Tailwind CSS** | Styling Framework | 3.3.5 |
+| **TanStack Query** | Data Fetching & Caching | 5.8.4 |
+| **React Router** | Client-side Routing | 6.20.0 |
+| **Zustand** | State Management | 4.4.7 |
+| **Axios** | HTTP Client | 1.6.0 |
+| **Lucide React** | Icon Library | 0.294.0 |
+| **Vitest** | Testing Framework | 0.34.6 |
 
-   Edit the `.env` file with your configuration.
-
-3. **Build and run with Docker**
-
-   ```bash
-   docker-compose up --build
-   ```
-
-   The application will be available at `http://localhost:3000`
-
-## 🏗️ Project Structure
+## 📁 Project Structure
 
 ```
 src/
-├── components/
-│   ├── Common/
-│   │   ├── LoadingSpinner.js
-│   │   ├── ConfirmDialog.js
-│   │   └── ...
-│   ├── Dashboard/
-│   │   ├── Dashboard.js
-│   │   └── Dashboard.css
-│   ├── Layout/
-│   │   ├── Layout.js
-│   │   └── Layout.css
-│   ├── Reservations/
-│   │   ├── ReservationsList.js
-│   │   ├── CreateReservation.js
-│   │   └── ...
-│   └── Spaces/
-│       ├── SpacesList.js
-│       ├── SpaceDetails.js
-│       └── ...
-├── contexts/
-│   ├── ApiContext.js
-│   └── ErrorContext.js
-├── App.js
-├── App.css
-└── index.js
-```
-
-## 📡 API Integration
-
-### API Endpoints Used
-
-| Method | Endpoint        | Description                        |
-| ------ | --------------- | ---------------------------------- |
-| GET    | `/espacios`     | Fetch all available spaces         |
-| GET    | `/espacios/:id` | Fetch specific space details       |
-| GET    | `/reservas`     | Fetch reservations with pagination |
-| POST   | `/reservas`     | Create a new reservation           |
-| DELETE | `/reservas/:id` | Delete a reservation               |
-
-### API Configuration
-
-The application expects the following API response formats:
-
-**Spaces (GET /espacios)**
-
-```json
-{
-	"data": [
-		{
-			"id": 1,
-			"nombre": "Conference Room A",
-			"descripcion": "Large conference room with projector",
-			"tipo": "meeting",
-			"capacidad": 12,
-			"precio": 50,
-			"disponible": true,
-			"imagen": "https://example.com/image.jpg"
-		}
-	]
-}
-```
-
-**Reservations (GET /reservas)**
-
-```json
-{
-	"data": [
-		{
-			"id": 1,
-			"cliente": "John Doe",
-			"email": "john@example.com",
-			"espacioId": 1,
-			"fecha": "2024-03-15",
-			"horaInicio": "09:00",
-			"horaFin": "11:00",
-			"estado": "confirmed"
-		}
-	],
-	"total": 25,
-	"page": 1,
-	"limit": 10
-}
-```
-
-### Authentication
-
-The application uses API key authentication. Include the API key in your `.env` file:
-
-```
-REACT_APP_API_KEY=your-api-key-here
-```
-
-All API requests include the header:
-
-```
-X-API-Key: your-api-key-here
-```
-
-## 🎨 User Interface
-
-### Dashboard
-
-- Overview statistics (total spaces, available spaces, total reservations)
-- Quick action buttons for common tasks
-- Recent reservations list
-- Responsive card-based layout
-
-### Spaces
-
-- Grid view of available spaces
-- Search and filter functionality
-- Detailed space information
-- Direct reservation links
-- High-quality images and space amenities
-
-### Reservations
-
-- Paginated table view of all reservations
-- Search by client name or space
-- Filter by reservation status
-- Create new reservations with form validation
-- Delete reservations with confirmation
-
-## ✅ Testing
-
-### Run Tests
-
-```bash
-npm test
-# or
-yarn test
-```
-
-### Test Coverage
-
-```bash
-npm run test:coverage
-# or
-yarn test:coverage
-```
-
-### Manual Testing Checklist
-
-1. **Navigation**
-
-   - [ ] All navigation links work correctly
-   - [ ] Active page is highlighted
-   - [ ] Mobile navigation is responsive
-
-2. **Spaces**
-
-   - [ ] Spaces load and display correctly
-   - [ ] Search functionality works
-   - [ ] Filters apply correctly
-   - [ ] Space details page loads
-   - [ ] Reserve button navigates to reservation form
-
-3. **Reservations**
-
-   - [ ] Reservations list loads with pagination
-   - [ ] Create reservation form validates input
-   - [ ] Successful reservation creation
-   - [ ] Delete reservation works with confirmation
-   - [ ] Search and filter functionality
-
-4. **Error Handling**
-   - [ ] API errors display user-friendly messages
-   - [ ] Loading states show during API calls
-   - [ ] Form validation prevents invalid submissions
-
-## 🐳 Docker Support
-
-### Development with Docker
-
-```bash
-# Build development image
-docker build -t workspace-frontend:dev .
-
-# Run development container
-docker run -p 3000:3000 workspace-frontend:dev
-```
-
-### Production with Docker Compose
-
-```bash
-# Start all services
-docker-compose up -d
-
-# View logs
-docker-compose logs -f frontend
-
-# Stop services
-docker-compose down
+├── components/          # Reusable UI components
+│   ├── ui/             # Base UI components (Button, Input, etc.)
+│   ├── layout/         # Layout components
+│   ├── dashboard/      # Dashboard specific components
+│   ├── spaces/         # Space management components
+│   └── bookings/       # Booking management components
+├── hooks/              # Custom React hooks
+├── services/           # API service layer
+├── store/              # Zustand state stores
+├── types/              # TypeScript type definitions
+├── utils/              # Utility functions
+├── test/               # Test utilities and setup
+├── providers/          # React context providers
+├── main.tsx           # Application entry point
+└── App.tsx            # Root component
 ```
 
 ## 🔧 Configuration
 
 ### Environment Variables
 
-| Variable                 | Description            | Default                     |
-| ------------------------ | ---------------------- | --------------------------- |
-| `REACT_APP_API_BASE_URL` | Backend API base URL   | `http://localhost:3001/api` |
-| `REACT_APP_API_KEY`      | API authentication key | `your-api-key-here`         |
-
-### Customization
-
-#### Styling
-
-- **Tailwind CSS**: Utility-first CSS framework
-  - Custom design system in `tailwind.config.js`
-  - Custom components in `@layer components`
-  - Responsive design with mobile-first approach
-  - Dark mode support (optional)
-- **Component Styles**: Organized using Tailwind utilities
-- **Custom Components**: Button, form, card, and notification styles
-- **Color Scheme**: Customizable primary colors and semantic colors
-
-#### Tailwind Customization
-
-- Modify `tailwind.config.js` for design tokens
-- Add custom colors, fonts, and spacing
-- Extend animations and shadows
-- Configure responsive breakpoints
-
-#### API Integration
-
-- Update `src/contexts/ApiContext.js` for API configuration
-- Modify request/response handling as needed
-- Add new API endpoints following existing patterns
-
-## 🚀 Deployment
-
-### Production Build
+Create a `.env` file in the root directory:
 
 ```bash
+# API Configuration
+VITE_API_BASE_URL=http://localhost:3000
+VITE_API_KEY=your-api-key-here
+
+# App Configuration
+VITE_APP_NAME="Workspace Booking System"
+VITE_APP_VERSION="1.0.0"
+```
+
+### Backend Integration
+
+The frontend connects to a backend API running on `http://localhost:3000`. Ensure your backend server is running and configured with the following endpoints:
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/v1/spaces` | Fetch available workspaces |
+| `GET` | `/api/v1/spaces/:id` | Get workspace details |
+| `GET` | `/api/v1/bookings` | Fetch bookings with pagination |
+| `POST` | `/api/v1/bookings` | Create new booking |
+| `PUT` | `/api/v1/bookings/:id` | Update booking |
+| `DELETE` | `/api/v1/bookings/:id` | Cancel booking |
+
+## ✨ Features
+
+### Current Implementation
+- ✅ **Workspace Management** - Browse and view workspace details
+- ✅ **Booking System** - Create, view, and manage reservations
+- ✅ **Dashboard** - Overview statistics and quick actions
+- ✅ **Responsive Design** - Mobile-first design approach
+- ✅ **Type Safety** - Full TypeScript implementation
+- ✅ **Modern UI** - Clean interface with Tailwind CSS
+- ✅ **Data Caching** - Optimized API calls with TanStack Query
+- ✅ **Error Handling** - Comprehensive error boundaries
+- ✅ **Testing Suite** - Unit and integration tests
+
+### Technical Features
+- **Hot Module Replacement** - Instant development feedback
+- **Code Splitting** - Optimized bundle loading
+- **API Integration** - RESTful API with error handling  
+- **Form Validation** - Client-side validation with user feedback
+- **State Management** - Global and local state handling
+- **Accessibility** - WCAG compliant components
+
+## 🧪 Testing
+
+### Running Tests
+
+```bash
+# Run all tests
+npm run test
+
+# Watch mode during development
+npm run test -- --watch
+
+# Generate coverage report
+npm run test:coverage
+
+# Interactive test UI
+npm run test:ui
+```
+
+### Test Structure
+
+- **Unit Tests** - Component and utility testing
+- **Integration Tests** - API and user interaction testing
+- **Setup** - Configured with Testing Library and jsdom
+
+## 🐳 Docker Support
+
+### Production with Docker
+
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Run in background
+docker-compose up -d
+
+# Stop services
+docker-compose down
+```
+
+### Development with Docker
+
+```bash
+# Run development environment
+docker-compose --profile dev up
+
+# Or build development image manually
+docker build -f Dockerfile.dev -t workspace-frontend:dev .
+docker run -p 3001:3001 -v $(pwd):/app workspace-frontend:dev
+```
+
+### Docker Commands
+
+```bash
+# Build production image
+docker build -t workspace-frontend:prod .
+
+# Run production container
+docker run -p 3001:80 workspace-frontend:prod
+
+# View logs
+docker-compose logs -f frontend
+
+# Access container shell
+docker-compose exec frontend sh
+```
+
+## 🚀 Production Build
+
+### Build for Production
+
+```bash
+# Create optimized production build
 npm run build
-# or
-yarn build
+
+# Preview production build locally
+npm run preview
+```
+
+### Build Output
+
+```
+dist/
+├── index.html          # Entry HTML file
+├── assets/
+│   ├── index-[hash].js    # Main application bundle
+│   ├── vendor-[hash].js   # Third-party dependencies
+│   ├── ui-[hash].js       # UI components bundle
+│   └── index-[hash].css   # Compiled styles
+└── [other static assets]
 ```
 
 ### Deployment Options
 
-1. **Static Hosting** (Netlify, Vercel, GitHub Pages)
+1. **Docker** (Recommended)
+   ```bash
+   # Production build and run
+   docker-compose up --build
+   
+   # Or use Makefile
+   make start-docker
+   
+   # Access at http://localhost:3001
+   ```
 
-   - Build the project
-   - Deploy the `build` folder
-   - Configure environment variables
+2. **Vercel**
+   - Connect your repository
+   - Automatic deployments on push
+   - Environment variables in dashboard
 
-2. **Docker Deployment**
+3. **Netlify**
+   - Drag & drop `dist` folder
+   - Or connect repository for CI/CD
 
-   - Use the provided Dockerfile
-   - Deploy with docker-compose
-   - Configure reverse proxy if needed
-
-3. **Traditional Hosting**
-   - Build the project
-   - Upload `build` folder to web server
-   - Configure web server for SPA routing
+4. **Static Hosting**
+   - Upload `dist` folder contents
+   - Configure for SPA routing
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
-1. **CORS Errors**
+**Development server won't start**
+```bash
+# Clear node_modules and reinstall
+rm -rf node_modules package-lock.json
+npm install
+```
 
-   - Ensure backend allows frontend origin
-   - Check API base URL configuration
+**API connection errors**
+- Verify backend server is running on port 3000
+- Check `VITE_API_BASE_URL` in `.env` file  
+- Ensure API key is correctly configured
 
-2. **API Connection Issues**
+**Build errors**
+- Run `npm run type-check` to identify TypeScript issues
+- Check for missing dependencies
+- Verify Node.js version (v22.0+ required)
 
-   - Verify backend is running
-   - Check API key configuration
-   - Confirm API endpoints are accessible
-
-3. **Build Errors**
-   - Clear node_modules and reinstall
-   - Check Node.js version compatibility
-   - Verify all dependencies are installed
+**CORS issues**
+- Configure backend to allow frontend origin
+- Check API proxy configuration in `vite.config.js`
 
 ### Development Tips
 
-- Use browser developer tools for debugging
-- Check console for error messages
-- Verify network requests in Network tab
-- Use React Developer Tools extension
+- Use React Developer Tools browser extension
+- Check browser console for detailed error messages
+- Monitor network requests in browser DevTools
+- Use `npm run type-check` for TypeScript validation
 
-## 📝 Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit changes (`git commit -am 'Add new feature'`)
-4. Push to branch (`git push origin feature/new-feature`)
-5. Create a Pull Request
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+### Development Guidelines
+
+- Follow TypeScript best practices
+- Write tests for new features
+- Use semantic commit messages
+- Update documentation for significant changes
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Support
-
-For support and questions:
-
-- Create an issue in the repository
-- Contact the development team
-- Check the documentation for common solutions
+This project is licensed under the MIT License.
 
 ---
 
-**Built with ❤️ using React and modern web technologies**
+**Built with ❤️ using React, TypeScript, and modern web technologies**

@@ -23,6 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 
+# VS Code History extension
+.history/
+
+# Other editor temp files
+*~
+.#*
+#*#
+
 # Environment variables
 .env.local
 .env.development.local
@@ -31,21 +39,38 @@ dist-ssr
 
 # Testing
 coverage
+coverage/
+*.lcov
 
 # Dependency directories
 node_modules/
 .pnp.*
 
 # Build output
-
 dist/
-
-# Dependency directories - uncomment if needed
-# .yarn/
+dist-ssr/
 
 # Optional npm cache directory
 .npm
 
-.history
-.env.example
-.env
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary folders
+tmp/
+temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+*storybook.log
+storybook-static
