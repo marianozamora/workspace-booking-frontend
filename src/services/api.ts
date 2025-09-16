@@ -36,7 +36,13 @@ apiClient.interceptors.response.use(
   error => {
     // Handle common error cases
     if (error.response?.status === 401) {
-      // Handle authentication failure silently or with proper error handling
+      console.error('API Authentication failed - Invalid or missing API Key');
+    } else if (error.response?.status === 403) {
+      console.error('API Access forbidden - Check API permissions');
+    } else if (error.code === 'ECONNREFUSED') {
+      console.error('API Connection refused - Check if backend server is running');
+    } else if (error.message.includes('Network Error')) {
+      console.error('Network error - Check API URL and connection');
     }
 
     return Promise.reject(error);
